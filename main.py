@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
+from tkinter import messagebox
 
 #dont forget to write achive name is releated to the last upload
-
 
 def clean_unnecessary_collumns(df,name):
   header = ["ID",'Penetration No.','Location','FRL','Ref', 'Is Active']
@@ -18,13 +18,14 @@ def sort_by_location(archive_name):
 
 def submit_action():
     file_path = file_entry.get()
-    text_input = text_entry.get("1.0", "end-1c")
+    text_input = text_entry.get("1.0", "end-1c") or "report"
     csv_data = pd.read_csv(
                 file_path)
     new_df = sort_by_location(csv_data)
     clean_unnecessary_collumns(new_df,text_input)
-    print("File Path:", file_path)
-    print("Text Input:", text_input)
+    messagebox.showinfo("Submission", "Done")
+    file_entry.delete(0, tk.END)
+    text_entry.delete("1.0", tk.END)
 
 def browse_file():
     file_path = filedialog.askopenfilename()
