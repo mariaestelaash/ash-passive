@@ -6,7 +6,7 @@ from tkinter import messagebox
 #dont forget to write achive name is releated to the last upload
 
 def clean_unnecessary_collumns(df,name):
-  header = ["ID",'Penetration No.','Location','FRL','Ref', 'Is Active']
+  header = ["ID",'Penetration No.','Location','FRL','Ref', 'Is Active','Contractor']
   df.to_csv(name+'.csv',columns= header,index = False)
 
 def sort_by_location(archive_name):
