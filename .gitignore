@@ -2,3 +2,11 @@
 ./dist
 ./build
 *.csv
+./ashpassive_script
+./ashpassive_script/
+./build/main/COLLECT-00.toc
+./build/main/main.exe
+./dist/main/
+./main.cmd
+./main.dist/
+./main.exe
