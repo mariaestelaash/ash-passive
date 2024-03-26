@@ -2,12 +2,11 @@ import tkinter as tk
 from tkinter import filedialog
 import csv
 from PyPDF2 import PdfReader, PdfWriter
+from tkinter import messagebox
 
 
 def split_pages(pdf_file_path,pages):
   file_base_name = pdf_file_path.replace('.pdf', '')
-  print(file_base_name)
-
   pdf = PdfReader(pdf_file_path)
   count = 0
   for page_num in pages:
@@ -25,10 +24,13 @@ def browse_pdf():
 def submit_pdf():
     file_name = pdf_entry.get()
     num_pages = pages_entry.get()
-    print("PDF File:", file_name)
     pages = num_pages.split(",")
     split_pages(file_name,pages)
-    # You can add your logic here to process the PDF file
+    messagebox.showinfo("Submission", "Done")
+    pdf_entry.delete(0, tk.END)
+    pages_entry.delete(0, tk.END)
+   
+
 
 if __name__ == "__main__":
 
@@ -46,11 +48,15 @@ if __name__ == "__main__":
 
     pages_label = tk.Label(root2, text="Number of Pages:")
     pages_label.grid(row=1, column=0, padx=10, pady=10)
-
+    
+    
     pages_entry = tk.Entry(root2, width=40)
     pages_entry.grid(row=1, column=1, padx=10, pady=10)
 
     submit_button_pdf = tk.Button(root2, text="Submit", command=submit_pdf)
     submit_button_pdf.grid(row=2, column=1, padx=10, pady=10)
+    created_by_label = tk.Label(root2, text="by: Maria Estela")
+    created_by_label.grid(row=3, column=1, padx=5, pady=5)
+
 
     root2.mainloop()
